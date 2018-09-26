@@ -11,10 +11,10 @@
 <h2>Liste des Jedis</h2>
 
         <ul>
-            {% for product in products %}
+            {% for jedi in jedis %}
                 <li>
-                    <a href="/product/{{ product.id }} ">{{ loop.index }} - {{ product.id }} {{ product.name|upper }} - 
-                    SABER COLOR : {{ product.saberColor }}
+                    <a href="/product/{{ jedi.id }} ">{{ loop.index }} - {{ jedi.id }} {{ jedi.name|upper }} - 
+                    SABER COLOR : {{ jedi.saberColor }}
                     </a>
                 </li>
             {% endfor %}

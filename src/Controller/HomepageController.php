@@ -22,7 +22,7 @@ class HomepageController extends AbstractController
         $jedis = $jediRepository->findAll();
 
         return $this->render('homepage/index.html.twig', [
-            'products' => $jedis,
+            'jedis' => $jedis,
         ]);
     }
 }

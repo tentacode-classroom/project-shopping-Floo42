@@ -3,5 +3,9 @@
 {% block title %}Produit {{ productId }} {% endblock %}
 
 {% block body %}
+
+{% include '/layout/menu.html.twig' %}
+
 <h1> Produit {{ productId }} </h1>
+{{jedi.name}}
 {% endblock %}

@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ controller_name }}!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
+
+{% include '/layout/menu.html.twig' %}
+
 <h1> Accueil </h1>
+
+<h2>Liste des Jedis</h2>
+
+        <ul>
+            {% for product in products %}
+                <li>
+                    <a href="/product/{{ product.id }} ">{{ loop.index }} - {{ product.id }} {{ product.name|upper }} - 
+                    SABER COLOR : {{ product.saberColor }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
 {% endblock %}

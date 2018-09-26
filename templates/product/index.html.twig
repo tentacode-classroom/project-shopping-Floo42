@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit {{ productId }} {% endblock %}
+{% block title %}Produit {{ jedi.id }} {% endblock %}
 
 {% block body %}
 
 {% include '/layout/menu.html.twig' %}
 
-<h1> Produit {{ productId }} </h1>
+<h1> Produit {{ jedi.id }} </h1>
 {{jedi.name}}
 {% endblock %}

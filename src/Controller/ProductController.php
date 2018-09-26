@@ -19,7 +19,6 @@ class ProductController extends AbstractController
         $jedi = $jediRepository->findOneById($productId);
 
         return $this->render('product/index.html.twig', [
-            'productId' => $productId,
             'jedi' => $jedi,
         ]);
     }

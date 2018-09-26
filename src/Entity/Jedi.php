@@ -8,12 +8,13 @@ class Jedi
     private $name;
     private $saberColor;
     private $description;
+    private $price;
 
     public function setId(int $id)
     {
         $this->id = $id;
     }
-    public function getid()
+    public function getId()
     {
         return $this->id;
     }
@@ -46,5 +47,13 @@ class Jedi
         return $this->descritpion;
     }
 
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+    }
+    public function getPrice()
+    {
+        return $this->price;
+    }
 
 }

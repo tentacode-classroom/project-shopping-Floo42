@@ -2,22 +2,27 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block body %}
+{% block bodycards %}
 
-{% include '/layout/menu.html.twig' %}
 
-<h1> Accueil </h1>
 
-<h2>Liste des Jedis</h2>
-
-        <ul>
             {% for jedi in jedis %}
-                <li>
-                    <a href="/product/{{ jedi.id }} ">{{ loop.index }} - {{ jedi.id }} {{ jedi.name|upper }} - 
-                    SABER COLOR : {{ jedi.saberColor }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card h-100">
+                <a href="/product/{{ jedi.id }}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="/product/{{ jedi.id }}">{{ jedi.name }}</a>
+                  </h4>
+                  <h5>{{ jedi.price}}€ </h5>
+                  <p class="card-text">Couleur sabre : {{ jedi.saberColor }}</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+            </div>
+{% endfor %}
 
 {% endblock %}

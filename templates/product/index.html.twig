@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produit {{ jedi.id }} {% endblock %}
+{% block title %}Achetez {{jedi.name}} {% endblock %}
 
 {% block body %}
 
 {% include '/layout/menu.html.twig' %}
 
-<h1> Produit {{ jedi.id }} </h1>
-<br>
-Nom : {{jedi.name}}
-<br>
-Couleur sabre : {{jedi.saberColor}}
+<h1>  </h1>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{jedi.name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Couleur sabre : {{jedi.saberColor}}</li>
+    <li class="list-group-item">Description : {{jedi.description}}</li>
+    <li class="list-group-item">Prix : {{jedi.price}}€</li>
+  </ul>
+</div>
 {% endblock %}

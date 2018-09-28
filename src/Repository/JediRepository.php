@@ -1,54 +1,50 @@
 <?php
 
 namespace App\Repository;
+
 use App\Entity\Jedi;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
-
-class JediRepository
+/**
+ * @method Jedi|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Jedi|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Jedi[]    findAll()
+ * @method Jedi[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class JediRepository extends ServiceEntityRepository
 {
-    private $Jedis;
-
-    public function __construct()
+    public function __construct(RegistryInterface $registry)
     {
-        $jedi1 = new Jedi();
-        $jedi1->setId(11);
-        $jedi1->setName('Yoda');
-        $jedi1->setSaberColor('Vert');
-        $jedi1->setPrice(500);
-
-        $jedi2 = new Jedi();
-        $jedi2->setId(12);
-        $jedi2->setName('Qui-gon Jinn');
-        $jedi2->setSaberColor('Vert');
-        $jedi2->setPrice(400);
-
-        $jedi3 = new Jedi();
-        $jedi3->setId(13);
-        $jedi3->setName('Mace Windu');
-        $jedi3->setSaberColor('Violet');
-        $jedi3->setPrice(350);
-
-        $this->jedis = [
-            $jedi1,
-            $jedi2,
-            $jedi3,
-        ];
+        parent::__construct($registry, Jedi::class);
     }
 
-    public function findAll(): array
+//    /**
+//     * @return Jedi[] Returns an array of Jedi objects
+//     */
+    /*
+    public function findByExampleField($value)
     {
-        return $this->jedis;
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('j.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
+    */
 
-    public function findOneById(int $id): Jedi
+    /*
+    public function findOneBySomeField($value): ?Jedi
     {
-    $jedi = null;
-    foreach($this->jedis as $jedi) {
-        if ($id == $jedi->getId($id)) {
-        $item = $jedi;
-        break;
+        return $this->createQueryBuilder('j')
+            ->andWhere('j.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
-    }
-    return $item;
-}
+    */
 }

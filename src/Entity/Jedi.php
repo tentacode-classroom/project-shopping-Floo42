@@ -2,58 +2,90 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\JediRepository")
+ */
 class Jedi
 {
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
     private $saberColor;
-    private $description;
+
+    /**
+     * @ORM\Column(type="float")
+     */
     private $price;
 
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-    public function getId()
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setSaberColor(string $color)
+    public function setName(string $name): self
     {
-        $this->saberColor = $color;
+        $this->name = $name;
+
+        return $this;
     }
-    public function getSaberColor()
+
+    public function getSaberColor(): ?string
     {
         return $this->saberColor;
     }
 
-    public function setDescription(string $desc)
+    public function setSaberColor(?string $saberColor): self
     {
-        $this->saber_color = $desc;
-    }
-    public function getDescription()
-    {
-        return $this->descritpion;
+        $this->saberColor = $saberColor;
+
+        return $this;
     }
 
-    public function setPrice(float $price)
-    {
-        $this->price = $price;
-    }
-    public function getPrice()
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
 }

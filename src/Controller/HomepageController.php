@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use src\Entity\Jedi;
+use App\Entity\Jedi;
 use App\Repository\JediRepository;
 
 class HomepageController extends AbstractController
@@ -14,12 +14,11 @@ class HomepageController extends AbstractController
      */
 
    
-
     public function index()
     {
-
-        $jediRepository = new JediRepository();
-        $jedis = $jediRepository->findAll();
+        $jedis = $this->getDoctrine()
+        ->getRepository(Jedi::class)
+        ->findAllJedisHomepage();
 
         return $this->render('homepage/index.html.twig', [
             'jedis' => $jedis,

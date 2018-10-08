@@ -36,6 +36,11 @@ class Jedi
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $viewCounter;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,5 +92,22 @@ class Jedi
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getViewCounter(): ?int
+    {
+        return $this->viewCounter;
+    }
+
+    public function setViewCounter(?int $ViewCounter): self
+    {
+        $this->viewCounter = $ViewCounter;
+
+        return $this;
+    }
+
+    public function incrementViewCounter()
+    {
+        $this->viewCounter++;
     }
 }

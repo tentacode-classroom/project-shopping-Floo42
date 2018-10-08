@@ -22,19 +22,17 @@ class JediRepository extends ServiceEntityRepository
 //    /**
 //     * @return Jedi[] Returns an array of Jedi objects
 //     */
-    /*
-    public function findByExampleField($value)
+    
+    public function findAllJedisHomepage()
     {
         return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('j.id', 'ASC')
+            ->orderBy('j.name', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Jedi

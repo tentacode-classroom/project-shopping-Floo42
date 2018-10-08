@@ -41,6 +41,12 @@ class Jedi
      */
     private $viewCounter;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Species", inversedBy="jedis", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $species;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,5 +115,17 @@ class Jedi
     public function incrementViewCounter()
     {
         $this->viewCounter++;
+    }
+
+    public function getSpecies(): ?Species
+    {
+        return $this->species;
+    }
+
+    public function setSpecies(?Species $species): self
+    {
+        $this->species = $species;
+
+        return $this;
     }
 }

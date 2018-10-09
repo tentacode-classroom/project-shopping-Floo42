@@ -8,7 +8,7 @@
 
 <h1>  </h1>
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 30rem;">
   <div class="card-header">
     {{jedi.name}}
   </div>
@@ -16,14 +16,25 @@
     <li class="list-group-item">Espece : {{jedi.species.name}}</li>
     <li class="list-group-item">Couleur sabre : {{jedi.saberColor}}</li>
     <li class="list-group-item">Description : {{jedi.description}}</li>
-    <li class="list-group-item">Prix : {{jedi.price}}€</li>
+    <li class="list-group-item">Prix : {{ jedi.price|price(2, ',', '.') }}</li>
     <li class="list-group-item">Tags :  
     {% for tag in jedi.tags %}
       <span class="badge badge-primary"> {{ tag.name }} </span>
     {% endfor %}
     </li>
     <li class="list-group-item">Nombre de vues : {{jedi.viewCounter}}</li>
-
+ <li class="list-group-item">Yolo : 
+ {% if is_mobile() == true %}
+  Vous utilisez un gsm
+  <style>
+  body {
+   background-color:pink;
+  }
+  </style>
+{% else %}
+  Vous utilisez un ordinateur
+{% endif %}</li>
+<li class="list-group-item">Remplacement de caracteres :{{ replaceNonAlphaNumerics("aa,bb!", "-") }}</li>
   </ul>
 </div>
 {% endblock %}

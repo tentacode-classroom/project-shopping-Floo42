@@ -11,9 +11,26 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('logout') }}">Déconnexion</a>
+            </li>
+{% else %}
             <li class="nav-item">
               <a class="nav-link" href="{{ path("registration")}}">Inscription</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('login') }}">Connexion</a>
             </li>
+{% endif %}
+
+{% if is_granted('ROLE_ADMIN') %}
+  <li class="nav-item">
+    <a class="nav-link" href="{{ path("admin")}}">Espace admin</a>
+  </li>
+{%endif%}
+
           </ul>
         </div>
       </div>

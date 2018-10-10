@@ -19,7 +19,7 @@
     <li class="list-group-item">Espece : {{jedi.species.name}}</li>
     <li class="list-group-item">Couleur sabre : {{jedi.saberColor}}</li>
     <li class="list-group-item">Description : {{jedi.description}}</li>
-    <li class="list-group-item">Prix : {{ jedi.price|price(2, ',', '.', 'FR') }}</li>
+    <li class="list-group-item">Prix : {{ jedi.price|convertPrice("FR")|price(2, ',', '.', 'FR') }}</li>
     
     <li class="list-group-item">Prix converti pour le pays {{countryCode}} : {{ jedi.price|convertPrice(countryCode)|price(2, ',', '.',countryCode) }}</li>
 
@@ -28,6 +28,7 @@
       <span class="badge badge-primary"> {{ tag.name }} </span>
     {% endfor %}
     </li>
+
     <li class="list-group-item">Nombre de vues : {{jedi.viewCounter}}</li>
  <li class="list-group-item">Mobile ou non : 
  {% if is_mobile() == true %}
@@ -40,7 +41,9 @@
 {% else %}
   Vous utilisez un ordinateur
 {% endif %}</li>
+
 <li class="list-group-item">Remplacement de caracteres :{{ replaceNonAlphaNumerics("aa,bb!", "-") }}</li>
+
   </ul>
 </div>
 {% endblock %}

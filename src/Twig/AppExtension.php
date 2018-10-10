@@ -13,7 +13,7 @@ class AppExtension extends AbstractExtension
     {
         return array(
             new TwigFilter('price', array(AppRuntime::class, 'priceFilter')),
-            new TwigFilter('convertPrice', array($this, 'convertPrice', 'convertPrice')),
+            new TwigFilter('convertPrice', array(AppRuntime::class, 'convertPrice')),
         );
     }
 
@@ -21,7 +21,7 @@ class AppExtension extends AbstractExtension
     {
         return array(
             new TwigFunction('is_mobile', array($this, 'is_mobile')),
-            new TwigFunction('replaceNonAlphaNumerics', array($this, 'replaceNonAlphaNumerics')),
+            new TwigFunction('replaceNonAlphaNumerics', array($this, 'replaceNonAlphaNumerics'))
         );
     }
 
@@ -38,17 +38,7 @@ class AppExtension extends AbstractExtension
         return preg_replace("/[^A-Za-z0-9 ]/", $replacer, $string);
     } 
 
-    public function convertPrice($price, $countryCode = "US"){
-        switch($countryCode){
-            case "US":
-                return ($price*1.15);
-            case "UK":
-                return ($price*0.87);
-            case "FR":    
-                return $price;
-        }
-
-    }
+   
     
 
 }

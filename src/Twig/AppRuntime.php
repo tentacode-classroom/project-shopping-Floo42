@@ -7,24 +7,28 @@ class AppRuntime implements RuntimeExtensionInterface
 {
     public function __construct()
     {
-        // this simple example doesn't define any dependency, but in your own
-        // extensions, you'll need to inject services using this constructor
     }
 
     public function priceFilter($number, $decimals = 0, $decPoint = '.', $thousandsSep = ',', $countryCode = "US")
     {
         $price = number_format($number, $decimals, $decPoint, $thousandsSep);
-
-        switch($countryCode){
-            case "US":
-                return '$'.$price;
-            case "UK":
-                return '£'.$price;
-            case "FR":
-                return $price.'€';
-        }
+        return $price;
     }
 
 
+    public function convertPrice($price, $countryCode = "US"){
+        switch($countryCode){
+            case "US":
+            print("$");  
+            return ($price*1.15);
+            case "UK":
+            print("£");  
+                return ($price*0.87);
+            case "FR":
+            print("€");    
+                return $price;
+        }
+
+    }
 
 }

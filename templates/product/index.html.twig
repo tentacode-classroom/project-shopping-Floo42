@@ -13,7 +13,7 @@
     {{jedi.name}}
   </div>
 
-  {% set countryCode = "US" %}
+  {% set countryCode = "UK" %}
 
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Espece : {{jedi.species.name}}</li>
@@ -29,9 +29,9 @@
     {% endfor %}
     </li>
     <li class="list-group-item">Nombre de vues : {{jedi.viewCounter}}</li>
- <li class="list-group-item">Yolo : 
+ <li class="list-group-item">Mobile ou non : 
  {% if is_mobile() == true %}
-  Vous utilisez un gsm
+  Vous utilisez un portable/tablette
   <style>
   body {
    background-color:pink;

@@ -13,6 +13,7 @@ class AppExtension extends AbstractExtension
     {
         return array(
             new TwigFilter('price', array(AppRuntime::class, 'priceFilter')),
+            new TwigFilter('convertPrice', array($this, 'convertPrice', 'convertPrice')),
         );
     }
 
@@ -36,6 +37,18 @@ class AppExtension extends AbstractExtension
     public function replaceNonAlphaNumerics($string,$replacer = "-"){
         return preg_replace("/[^A-Za-z0-9 ]/", $replacer, $string);
     } 
+
+    public function convertPrice($price, $countryCode = "US"){
+        switch($countryCode){
+            case "US":
+                return ($price*1.15);
+            case "UK":
+                return ($price*0.87);
+            case "FR":    
+                return $price;
+        }
+
+    }
     
 
 }

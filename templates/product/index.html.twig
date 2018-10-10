@@ -12,11 +12,17 @@
   <div class="card-header">
     {{jedi.name}}
   </div>
+
+  {% set countryCode = "US" %}
+
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Espece : {{jedi.species.name}}</li>
     <li class="list-group-item">Couleur sabre : {{jedi.saberColor}}</li>
     <li class="list-group-item">Description : {{jedi.description}}</li>
-    <li class="list-group-item">Prix : {{ jedi.price|price(2, ',', '.') }}</li>
+    <li class="list-group-item">Prix : {{ jedi.price|price(2, ',', '.', 'FR') }}</li>
+    
+    <li class="list-group-item">Prix converti pour le pays {{countryCode}} : {{ jedi.price|convertPrice(countryCode)|price(2, ',', '.',countryCode) }}</li>
+
     <li class="list-group-item">Tags :  
     {% for tag in jedi.tags %}
       <span class="badge badge-primary"> {{ tag.name }} </span>

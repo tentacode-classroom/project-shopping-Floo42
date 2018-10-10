@@ -11,12 +11,18 @@ class AppRuntime implements RuntimeExtensionInterface
         // extensions, you'll need to inject services using this constructor
     }
 
-    public function priceFilter($number, $decimals = 0, $decPoint = '.', $thousandsSep = ',')
+    public function priceFilter($number, $decimals = 0, $decPoint = '.', $thousandsSep = ',', $countryCode = "US")
     {
         $price = number_format($number, $decimals, $decPoint, $thousandsSep);
-        $price = $price.'€';
 
-        return $price;
+        switch($countryCode){
+            case "US":
+                return '$'.$price;
+            case "UK":
+                return '£'.$price;
+            case "FR":
+                return $price.'€';
+        }
     }
 
 

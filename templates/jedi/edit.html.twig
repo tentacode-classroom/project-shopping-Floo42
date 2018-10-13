@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Jedi{% endblock %}
+
+{% block body %}
+    <h1>Edit Jedi</h1>
+
+    {{ include('jedi/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('jedi_index') }}">back to list</a>
+
+    {{ include('jedi/_delete_form.html.twig') }}
+{% endblock %}

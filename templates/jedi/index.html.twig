@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jedi index{% endblock %}
+
+{% block body %}
+    <h1>Jedi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>SaberColor</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>ViewCounter</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jedi in jedis %}
+            <tr>
+                <td>{{ jedi.id }}</td>
+                <td>{{ jedi.name }}</td>
+                <td>{{ jedi.saberColor }}</td>
+                <td>{{ jedi.price }}</td>
+                <td>{{ jedi.description }}</td>
+                <td>{{ jedi.viewCounter }}</td>
+                <td>
+                    <a href="{{ path('jedi_show', {'id': jedi.id}) }}">show</a>
+                    <a href="{{ path('jedi_edit', {'id': jedi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('jedi_new') }}">Create new</a>
+{% endblock %}
